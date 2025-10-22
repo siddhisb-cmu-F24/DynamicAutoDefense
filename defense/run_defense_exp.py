@@ -8,7 +8,7 @@ from defense.explicit_detector.agency.explicit_1_agent import (VanillaJailbreakD
                                                                VanillaJailbreakDetectorV0125)
 from defense.explicit_detector.agency.explicit_2_agents import AutoGenDetectorV1, AutoGenDetectorV0125
 from defense.explicit_detector.agency.explicit_3_agents import AutoGenDetectorThreeAgency, AutoGenDetectorThreeAgencyV2
-from defense.explicit_detector.agency.explicit_5_agents import DetectorFiveAgency
+# from defense.explicit_detector.agency.explicit_5_agents import DetectorFiveAgency
 from defense.explicit_detector.explicit_defense_arch import ExplicitMultiAgentDefense
 # from defense.implicit_detector.agency.implicit_1_agent import MoralAdvisor
 # from defense.implicit_detector.agency.implicit_2_agents import MoralAdvisor2Agent

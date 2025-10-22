@@ -1,14 +1,8 @@
 [
   {
-    "api_key": "sk-1234567890abcdef",
-    "base_url": "",
-    "model": "gpt-35-turbo",
-    "api_type": "azure",
-    "api_version": "2023-05-15"
-  },
-  {
-    "api_key": "sk-1234567890abcdef",
-    "model": "gpt-4-1106-preview",
-    "api_type": "openai"
+    "model": "mistral-7b-instruct",
+    "api_type": "openai",
+    "base_url": "http://localhost:9005/v1",
+    "api_key": "sk-local-123"
   }
 ]

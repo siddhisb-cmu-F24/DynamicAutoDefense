@@ -113,7 +113,7 @@
       "n_ctx": 2048
     },
     {
-      "model": "/nfs/hpc/dgx2-3/llama-cpp-models/mistral-7b-instruct-v0.2.Q8_0.gguf",
+      "model": "/Users/sushmitvaish/models/mistral/mistral-7b-instruct-v0.2.Q4_K_M.gguf",
       "model_alias": "mistral-7b-v0.2",
       "chat_format": "mistrallite",
       "n_gpu_layers": -1,
