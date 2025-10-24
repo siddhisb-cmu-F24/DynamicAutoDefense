@@ -28,7 +28,6 @@ done
 ```
 
 ```
-# start fresh with a friendly alias that matches your --model_list
 LLAMA_METAL=1 python -m llama_cpp.server \
   --model "/Users/sushmitvaish/models/mistral/mistral-7b-instruct-v0.2.Q4_K_M.gguf" \
   --model_alias "mistral-7b-instruct" \
@@ -60,14 +59,15 @@ python defense/run_defense_exp.py --model_list llama-2-13b \
 After finish the defense experiment, the output will appear in the `data/defense_output/open-llm-defense_fp0-dan/llama-2-13b` folder.
 
 ```
-OPENAI_API_KEY="sk-local-123" AUTOGEN_USE_DOCKER=0 JOBLIB_START_METHOD=spawn \
+OPENAI_API_KEY=sk-local-123 AUTOGEN_USE_DOCKER=0 JOBLIB_START_METHOD=spawn \
 python -m defense.run_defense_exp \
   --model_list mistral-7b-instruct \
-  --output_suffix _fp0-dan \
+  --output_suffix _fp2-dan \
   --temperature 0.7 --frequency_penalty 0.0 --presence_penalty 0.0 \
   --eval_harm \
-  --chat_file "data/harmful_output/gpt-35-turbo-1106/attack-dan.json" \
-  --host_name localhost --port_start 9005 --num_of_instance 1
+  --chat_file data/harmful_output/gpt-35-turbo-1106/attack-dan.json \
+  --host_name localhost --port_start 9005 --num_of_instance 1 \
+  --measure_latency
 ```
 
 ## GPT-4 Evaluation
@@ -95,7 +95,7 @@ The FPR will be saved in the `data/defense_output/defense_fp.csv` file.
 
 ```
 python evaluator/mistral_evaluator.py \
-  --defense_output_dir data/defense_output/open-llm-defense_fp0-dan/mistral-7b-instruct/ex-3 \
+  --defense_output_dir data/defense_output/open-llm-defense_fp2-dan/mistral-7b-instruct/ex-3.json \
   --ori_prompt_file_name prompts_curated.json \
   --openai_base http://localhost:9005/v1 \
   --model_name mistral-7b-instruct
