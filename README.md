@@ -27,6 +27,14 @@ do
 done
 ```
 
+```
+# start fresh with a friendly alias that matches your --model_list
+LLAMA_METAL=1 python -m llama_cpp.server \
+  --model "/Users/sushmitvaish/models/mistral/mistral-7b-instruct-v0.2.Q4_K_M.gguf" \
+  --model_alias "mistral-7b-instruct" \
+  --host 127.0.0.1 --port 9005 --n_ctx 4096 --n_threads 6
+```
+
 ## Response Generation
 
 The responses are genearte by GPT-3.5-Turbo. Please fill in the token information in `data/config/llm_config_list.json` before running the following command.
@@ -51,6 +59,17 @@ python defense/run_defense_exp.py --model_list llama-2-13b \
 
 After finish the defense experiment, the output will appear in the `data/defense_output/open-llm-defense_fp0-dan/llama-2-13b` folder.
 
+```
+OPENAI_API_KEY="sk-local-123" AUTOGEN_USE_DOCKER=0 JOBLIB_START_METHOD=spawn \
+python -m defense.run_defense_exp \
+  --model_list mistral-7b-instruct \
+  --output_suffix _fp0-dan \
+  --temperature 0.7 --frequency_penalty 0.0 --presence_penalty 0.0 \
+  --eval_harm \
+  --chat_file "data/harmful_output/gpt-35-turbo-1106/attack-dan.json" \
+  --host_name localhost --port_start 9005 --num_of_instance 1
+```
+
 ## GPT-4 Evaluation
 
 Evaluating harmful output defense:
@@ -73,3 +92,11 @@ python evaluator/evaluate_safe.py
 
 This will find all output folders in `data/defense_output` that contain the keyword `-safe` and evaluate the false positive rate(FPR).
 The FPR will be saved in the `data/defense_output/defense_fp.csv` file.
+
+```
+python evaluator/mistral_evaluator.py \
+  --defense_output_dir data/defense_output/open-llm-defense_fp0-dan/mistral-7b-instruct/ex-3 \
+  --ori_prompt_file_name prompts_curated.json \
+  --openai_base http://localhost:9005/v1 \
+  --model_name mistral-7b-instruct
+```
