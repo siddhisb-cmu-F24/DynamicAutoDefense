@@ -15,6 +15,13 @@ from defense.explicit_detector.agency.explicit_1_agent import (
 )
 from defense.explicit_detector.agency.explicit_2_agents import AutoGenDetectorV1, AutoGenDetectorV0125
 from defense.explicit_detector.agency.explicit_3_agents import AutoGenDetectorThreeAgency, AutoGenDetectorThreeAgencyV2
+
+# Dynamic Router
+# To run dynamic router version with 3 agents
+# from defense.explicit_detector.agency.dynamic_router_agents import DynamicRouterDetector
+# To run dynamic router version with 2 agents
+from defense.explicit_detector.agency.dynamic_router_2_agents import DynamicRouterDetector
+
 from defense.explicit_detector.explicit_defense_arch import ExplicitMultiAgentDefense
 # from defense.implicit_detector.agency.implicit_1_agent import MoralAdvisor
 # from defense.implicit_detector.agency.implicit_2_agents import MoralAdvisor2Agent
@@ -29,7 +36,6 @@ defense_strategies = [
     # {"name": "im-3", "defense_agency": ImplicitMultiAgentDefense, "task_agency": MoralAdvisor3Agent},
     # {"name": "ex-1", "defense_agency": ExplicitMultiAgentDefense, "task_agency": VanillaJailbreakDetector},
     # {"name": "ex-2", "defense_agency": ExplicitMultiAgentDefense, "task_agency": AutoGenDetectorV1},
-    {"name": "ex-3", "defense_agency": ExplicitMultiAgentDefense, "task_agency": AutoGenDetectorThreeAgency},
     # {"name": "ex-cot", "defense_agency": ExplicitMultiAgentDefense, "task_agency": CoT},
     # {"name": "ex-1-0125", "defense_agency": ExplicitMultiAgentDefense, "task_agency": VanillaJailbreakDetectorV0125},
     # {"name": "ex-2-0125", "defense_agency": ExplicitMultiAgentDefense, "task_agency": AutoGenDetectorV0125},
@@ -37,6 +43,11 @@ defense_strategies = [
     # {"name": "ex-5", "defense_agency": ExplicitMultiAgentDefense, "task_agency": DetectorFiveAgency},
     # {"name": "ex-3-v2", "defense_agency": ExplicitMultiAgentDefense, "task_agency": AutoGenDetectorThreeAgencyV2},
     # {"name": "ex-cot-v2", "defense_agency": ExplicitMultiAgentDefense, "task_agency": CoTV2},
+
+    # Project
+
+    # {"name": "ex-3", "defense_agency": ExplicitMultiAgentDefense, "task_agency": AutoGenDetectorThreeAgency},
+    {"name": "dynamic-moderate", "defense_agency": ExplicitMultiAgentDefense, "task_agency": DynamicRouterDetector}
 ]
 
 # ---------------- Latency instrumentation ----------------

@@ -62,7 +62,7 @@ After finish the defense experiment, the output will appear in the `data/defense
 OPENAI_API_KEY=sk-local-123 AUTOGEN_USE_DOCKER=0 JOBLIB_START_METHOD=spawn \
 python -m defense.run_defense_exp \
   --model_list mistral-7b-instruct \
-  --output_suffix _fp2-dan \
+  --output_suffix _fp6-dan \
   --temperature 0.7 --frequency_penalty 0.0 --presence_penalty 0.0 \
   --eval_harm \
   --chat_file data/harmful_output/gpt-35-turbo-1106/attack-dan.json \
@@ -95,8 +95,9 @@ The FPR will be saved in the `data/defense_output/defense_fp.csv` file.
 
 ```
 python evaluator/mistral_evaluator.py \
-  --defense_output_dir data/defense_output/open-llm-defense_fp2-dan/mistral-7b-instruct/ex-3.json \
+  --defense_output_dir data/defense_output/open-llm-defense_fp6-dan/mistral-7b-instruct/dynamic-moderate.json \
   --ori_prompt_file_name prompts_curated.json \
   --openai_base http://localhost:9005/v1 \
   --model_name mistral-7b-instruct
 ```
+
